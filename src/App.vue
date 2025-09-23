@@ -1,11 +1,19 @@
 <script setup lang="ts">
-import Profile from './components/Profile.vue'
+import { onMounted } from 'vue';
+import Profile from './components/Profile.vue';
+import { useProfileStore } from './stores/profile.store';
+
+const store = useProfileStore();
+
+onMounted(() => {
+  store.fetchProfile();
+});
 </script>
 
 <template>
   <div class="app">
     <div class="menu">
-      <Profile name="Боб" />
+      <Profile v-if="store.profile" :name="store.profile.name" />
     </div>
     <div class="content">content</div>
   </div>
