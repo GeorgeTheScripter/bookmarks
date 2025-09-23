@@ -1,14 +1,19 @@
 <script setup lang="ts">
-const { name } = defineProps<{
-  name: string
-}>()
+import { useProfileStore } from '@/stores/profile.store';
+import { onMounted } from 'vue';
+
+const store = useProfileStore();
+
+onMounted(() => {
+  store.fetchProfile();
+});
 </script>
 
 <template>
   <div class="menu-head">
     <img class="menu-head__img" src="/src/assets/avatar.png" alt="avatar" />
     <div class="menu-head__greetings">
-      Привет, <span>{{ name }}</span>
+      Привет, <span>{{ store.profile?.name }}</span>
     </div>
   </div>
 </template>
@@ -26,5 +31,9 @@ const { name } = defineProps<{
 
 .menu-head__greetings span {
   font-weight: 700;
+}
+
+.menu-head__img {
+  width: 80px;
 }
 </style>

@@ -1,4 +1,10 @@
-export const API_BASE = 'http://localhost:3000/api';
+import axios, { type AxiosInstance } from 'axios';
+
 export const API_ROUTES = {
-  profile: `${API_BASE}/profile`,
+  profile: `/profile`,
+  categories: `/categories`,
 };
+
+export const http: AxiosInstance = axios.create({
+  baseURL: 'http://localhost:3000/api',
+});
