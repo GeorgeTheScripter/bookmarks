@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { size = 32 } = defineProps<{ size?: number }>();
+const { size } = defineProps<{ size?: number }>();
 </script>
 
 <template>
@@ -16,6 +16,10 @@ const { size = 32 } = defineProps<{ size?: number }>();
   cursor: pointer;
   background-color: var(--color-fg);
   border-radius: 100px;
+  padding: 12px 32px;
+  color: var(--color-bg);
+  font-size: 18px;
+  border: none;
 }
 
 .button:hover {
