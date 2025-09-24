@@ -14,8 +14,21 @@ export const useCategoriesStore = defineStore('categories', () => {
       console.log(err);
     }
   }
+
+  async function createCategory() {
+    try {
+      const { data } = await http.post<Category>(API_ROUTES.categories, {
+        name: 'Новая категория',
+        alias: 'New category',
+      });
+      categories.value?.push(data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
   return {
     categories,
     getCategories,
+    createCategory,
   };
 });
