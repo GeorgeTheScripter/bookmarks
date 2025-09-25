@@ -1,16 +1,11 @@
-import Test from '@/components/Test.vue';
-import Test_2 from '@/components/Test_2.vue';
-import AuthPage from '@/pages/AuthPage.vue';
-import MainPage from '@/pages/MainPage.vue';
-
 export const routes = [
-  { path: '/', component: AuthPage },
+  { path: '/', component: () => import('@/pages/AuthPage.vue') },
   {
     path: '/main',
-    component: MainPage,
+    component: () => import('@/pages/MainPage.vue'),
     children: [
-      { path: '', component: Test, name: 'main' },
-      { path: '/development', component: Test_2 },
+      { path: '', component: () => import('@/components/Test.vue'), name: 'main' },
+      { path: '/development', component: () => import('@/components/Test_2.vue') },
     ],
   },
 ];
